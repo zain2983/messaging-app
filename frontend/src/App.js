@@ -1,22 +1,21 @@
 // src/App.js
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { onAuthStateChanged } from 'firebase/auth';  // Firebase auth state listener
-import { auth } from './services/firebase';  // Import Firebase auth
-import Login from './components/Login';    // Import Login component
-import Register from './components/Register'; // Import Register component
-import Dashboard from './components/Dashboard'; // This is where the user will land after logging in
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from './services/firebase'; 
+import Login from './components/Login';    
+import Register from './components/Register'; 
+import Dashboard from './components/Dashboard'; 
 
 function App() {
-  const [user, setUser] = useState(null);  // Manage the logged-in user
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    // Firebase authentication state listener
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);  // Update user state if authenticated or null
+      setUser(currentUser);
     });
 
-    return () => unsubscribe();  // Clean up listener on component unmount
+    return () => unsubscribe();
   }, []);
 
   return (

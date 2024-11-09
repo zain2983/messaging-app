@@ -19,9 +19,14 @@ const Dashboard = () => {
   };
 
   return (
-    <div>
-      <h1>Welcome to the Dashboard!</h1>
-      <button onClick={handleLogout}>Logout</button>
+    <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
+      <h1 className="text-3xl font-bold mb-8 text-gray-800">Welcome to the Dashboard!</h1>
+      <button
+        onClick={handleLogout}
+        className="px-6 py-2 text-white bg-blue-500 hover:bg-blue-600 rounded-md shadow-md transition duration-200"
+      >
+        Logout
+      </button>
     </div>
   );
 };
